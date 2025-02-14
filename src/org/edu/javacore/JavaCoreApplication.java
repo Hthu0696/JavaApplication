@@ -213,6 +213,339 @@ public class JavaCoreApplication {
     /**
      * Bài 18: Tính S(n) = 1 + x^2/2! + x^4/4! + … + x^2n/(2n)!
      */
+    private static float exercise18(int x, int number) {
+        int sum = 1, i = 1, temp = 1, m = 1;
+        while (i <= number) {
+            temp *= (int) Math.pow(x, (2 * i));
+            m *= 2 * i;
+            sum += temp / m;
+            i++;
+        }
+        return sum;
+    }
+
+    /**
+     * Bài 19: Tính S(n) = 1 + x + x^3/3! + x^5/5! + … + x^(2n+1)/(2n+1)!
+     */
+    private static float exercise19(int x, int number) {
+        int sum = 1, i = 1, temp = 1, m = 1;
+        while (i <= number) {
+            temp *= (int) Math.pow(x, ((2 * i) + 1));
+            m *= (2 * i) + 1;
+            sum += temp / m;
+            i++;
+        }
+        return sum;
+    }
+
+    /**
+     * Bài 20: Liệt kê tất cả các “ước số” của số nguyên dương n
+     */
+    private static void exercise20(int number) {
+        do {
+            if (number <= 0) {
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+                System.out.println("Please re-enter n");
+            }
+        } while (number <= 0);
+
+        System.out.print("List all the divisors of positive integers " + number + ": ");
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) {
+                System.out.print(i + "\t");
+            }
+        }
+    }
+
+    /**
+     * Bài 21: Tính tổng tất cả các “ ước số” của số nguyên dương n
+     */
+    private static int exercise21(int number) {
+        do {
+            if (number <= 0) {
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+                System.out.println("Please re-enter n");
+            }
+        } while (number <= 0);
+
+        int sum = 0;
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) {
+                sum += i;
+            }
+        }
+        return sum;
+    }
+
+    /**
+     * Bài 22:Tính tích tất cả các “ước số” của số nguyên dương n
+     */
+    private static int exercise22(int number) {
+        do {
+            if (number <= 0) {
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+                System.out.println("Please re-enter n");
+            }
+        } while (number <= 0);
+
+        int multi = 1;
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) {
+                multi *= i;
+            }
+        }
+        return multi;
+    }
+
+    /**
+     * Bài 23: Đếm số lượng “ước số” của số nguyên dương n
+     */
+    private static int exercise23(int number) {
+        do {
+            if (number <= 0) {
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+                System.out.println("Please re-enter n");
+            }
+        } while (number <= 0);
+
+        int count = 0;
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Bài 24: Liệt kê tất cả các “ước số lẻ” của số nguyên dương n
+     */
+    private static void exercise24(int number) {
+        do {
+            if (number <= 0) {
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+                System.out.println("Please re-enter n");
+            }
+        } while (number <= 0);
+
+        System.out.print("List all the odd divisors of positive integers " + number + ": ");
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) {
+                if (i % 2 == 1) {
+                    System.out.print(i + "\t");
+                }
+            }
+        }
+    }
+
+    /**
+     * Bài 25: Tính tổng tất cả các “ước số chẵn” của số nguyên dương n
+     */
+    private static int exercise25(int number) {
+        do {
+            if (number <= 0) {
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+                System.out.println("Please re-enter n");
+            }
+        } while (number <= 0);
+
+        int sum = 0;
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) {
+                if (i % 2 == 0) {
+                    sum += i;
+                }
+            }
+        }
+        return sum;
+    }
+
+    /**
+     * Bài 26: Tính tích tất cả các “ước số lẻ” của số nguyên dương n
+     */
+    private static int exercise26(int number) {
+        do {
+            if (number <= 0) {
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+                System.out.println("Please re-enter n");
+            }
+        } while (number <= 0);
+
+        int multi = 1;
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) {
+                if (i % 2 == 1) {
+                    multi *= i;
+                }
+            }
+        }
+        return multi;
+    }
+
+    /**
+     * Bài 27: Đếm số lượng “ước số chẵn” của số nguyên dương n
+     */
+    private static int exercise27(int number) {
+        do {
+            if (number <= 0) {
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+                System.out.println("Please re-enter n");
+            }
+        } while (number <= 0);
+
+        int count = 0;
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) {
+                if (i % 2 == 0) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    /**
+     * Bài 28: Cho số nguyên dương n. Tính tổng các ước số nhỏ hơn chính nó
+     */
+    private static int exercise28(int number) {
+        do {
+            if (number <= 0) {
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+                System.out.println("Please re-enter n");
+            }
+        } while (number <= 0);
+
+        int sum = 0;
+        for (int i = 1; i < number; i++) {
+            if (number % i == 0) {
+                sum += i;
+            }
+        }
+        return sum;
+    }
+
+    /**
+     * Bài 29: Tìm ước số lẻ lớn nhất của số nguyên dương n. Ví dụ n = 100 ước lẻ lớn nhất là 25
+     */
+    private static void exercise29(int number) {
+        do {
+            if (number <= 0) {
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+                System.out.println("Please re-enter n");
+            }
+        } while (number <= 0);
+
+        int max = 0;
+        for (int i = 1; i <= number; i++) {
+            if (number % i == 0) {
+                if (i % 2 == 1) {
+                    if (i > max) {
+                        max = i;
+                    }
+                }
+            }
+        }
+        System.out.println("the largest odd divisor of positive integers " + number + ":\t" + max);
+    }
+
+    /**
+     * Bài 30: Cho số nguyên dương n. Kiểm tra xem n có phải là số hoàn thiện hay không
+     */
+    private static boolean exercise30(int number) {
+        int sum = 0;
+        for (int i = 1; i < number; i++) {
+            if (number % i == 0) {
+                sum += i;
+            }
+        }
+        if (sum == number) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Bài 31: Cho số nguyên dương n. Kiểm tra xem n có phải là số nguyên tố hay không
+     */
+    private static boolean exercise31(int number) {
+        if (number == 2) {
+            return false;
+        }
+        for (int i = 2; i < number; i++) {
+            if (number % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    /**
+     * Bài 32: Cho số nguyên dương n. Kiểm tra xem n có phải là số chính phương hay không
+     */
+    private static boolean exercise32(int number) {
+        for (int i = 0; i * i <= number; ++i) {
+            if (i * i == number) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Bài 33: Tính S(n) = CanBac2(2+CanBac2(2+….+CanBac2(2 + CanBac2(2)))) có n dấu căn
+     */
+    private static float exercise33(int number) {
+        float sum;
+        do {
+            if (number < 1) {
+                System.out.println("Please re-enter n");
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+            }
+        } while (number < 1);
+        sum = (float) Math.sqrt(2);
+        int i = 2;
+        while (i <= number) {
+            sum = (float) Math.sqrt(2 + sum);
+            i++;
+        }
+        return sum;
+    }
+
+    /**
+     * Bài 34: Tính S(n) = CanBac2(n+CanBac2(n – 1 + CanBac2( n – 2 + … + CanBac2(2 + CanBac2(1) có n dấu căn
+     */
+    private static float exercise34(int number) {
+        float sum = 0;
+        do {
+            if (number < 1) {
+                System.out.println("Please re-enter n");
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+            }
+        } while (number < 1);
+        int i = 1;
+        while (i <= number) {
+            sum = (float) Math.sqrt(i + sum);
+            i++;
+        }
+        return sum;
+    }
+
+    /**
+     * Bài 35 Tính S(n)= √(1+√(2+√(3+⋯√(n-1+√n) ) ) ) có n dấu căn .
+     */
+
     public static void main(String... agv) {
 
         int a = 10;
@@ -291,6 +624,54 @@ public class JavaCoreApplication {
 
         float sumExercise17 = exercise17(x, number);
         System.out.println("S(" + number + ") " + "= " + sumExercise17);
+
+        float sumExercise18 = exercise18(x, number);
+        System.out.println("S(" + number + ") " + "= " + sumExercise18);
+
+        float sumExercise19 = exercise19(x, number);
+        System.out.println("S(" + number + ") " + "= " + sumExercise19);
+
+        exercise20(number);
+
+        int totalDivisor = exercise21(number);
+        System.out.println("\nTotal divisor of " + number + ": \t" + totalDivisor);
+
+        int multiplyTheDivisors = exercise22(number);
+        System.out.println("Multiply the divisors " + number + ": \t" + multiplyTheDivisors);
+
+        int countTheDivisors = exercise23(number);
+        System.out.println("Count the divisors " + number + ": \t" + countTheDivisors);
+
+        exercise24(number);
+
+        int sumAllTheEvenDivisorsOfPositive = exercise25(number);
+        System.out.println("\nSumming up all the even divisors of positive integers " + number + ": \t" + sumAllTheEvenDivisorsOfPositive);
+
+        int multiplyAllTheEvenDivisorsOfPositive = exercise26(number);
+        System.out.println("Summing up all the odd divisors of positive integers " + number + ": \t" + multiplyAllTheEvenDivisorsOfPositive);
+
+        int countTheEvenDivisorNumber = exercise27(number);
+        System.out.println("Count the even divisor number of positive integers " + number + ": \t" + countTheEvenDivisorNumber);
+
+        int sumOfDivisorsLessThanN = exercise28(number);
+        System.out.println("Sum of divisors less than " + number + ": \t" + sumOfDivisorsLessThanN);
+
+        exercise29(number);
+
+        boolean isCheckPerfectNumber = exercise30(number);
+        System.out.println("The " + number + " is Perfect number true or false: " + isCheckPerfectNumber);
+
+        boolean isPrimeNumber = exercise31(number);
+        System.out.println("The " + number + " is prime number true or false: " + isPrimeNumber);
+
+        boolean isSquareNumber = exercise32(number);
+        System.out.println("The " + number + " is Square number true or false: " + isSquareNumber);
+
+        float sumSqrtNumber = exercise33(number);
+        System.out.println("S(" + number + ") = " + sumSqrtNumber);
+
+        float sumSqrtOfTheExercise34 = exercise34(number);
+        System.out.println("S(" + number + ") = " + sumSqrtOfTheExercise34);
     }
 
 }
