@@ -138,7 +138,7 @@ public class JavaCoreApplication {
         int sum = 0;
         int product = 1;
         for (int i = 1; i <= number; i++) {
-            product *= (int) Math.pow(x, i);
+            product *= (int) pow(x, i);
             sum += product;
         }
         return sum;
