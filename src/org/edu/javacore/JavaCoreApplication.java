@@ -2,6 +2,8 @@ package org.edu.javacore;
 
 import java.util.Scanner;
 
+import static java.lang.Math.*;
+
 public class JavaCoreApplication {
     /**
      * Bài 1: Tính S(n) = 1 + 2 + 3 + … + n
@@ -516,7 +518,7 @@ public class JavaCoreApplication {
         sum = (float) sqrt(2);
         int i = 2;
         while (i <= number) {
-            sum = (float) Math.sqrt(2 + sum);
+            sum = (float) sqrt(2 + sum);
             i++;
         }
         return sum;
@@ -536,7 +538,7 @@ public class JavaCoreApplication {
         } while (number < 1);
         int i = 1;
         while (i <= number) {
-            sum = (float) Math.sqrt(i + sum);
+            sum = (float) sqrt(i + sum);
             i++;
         }
         return sum;
@@ -545,6 +547,176 @@ public class JavaCoreApplication {
     /**
      * Bài 35 Tính S(n)= √(1+√(2+√(3+⋯√(n-1+√n) ) ) ) có n dấu căn .
      */
+    private static float exercise35(int number) {
+        float sum = 0;
+        for (int i = 1; i <= number; i++) {
+            sum += (float) sqrt(i);
+        }
+        return sum;
+    }
+
+    /**
+     * Bài 36: Tính S(n)=√(n!+√((n-1)!+√((n-2)!+⋯+√(2!+√1!) ) ) ) có n dấu căn.
+     */
+    private static int factorial(int number) {
+        if (number == 0 || number == 1) {
+            return 1;
+        }
+        return number * factorial(number - 1);
+    }
+
+    private static float exercise36(int number) {
+        float sum = 0;
+        for (; number > 0; number--) {
+            sum = (float) sqrt(factorial(number) + sum);
+        }
+        return sum;
+    }
+
+    /**
+     * Bài 37: Tính S(n) = CanBac N(N + CanBac N – 1(N – 1 + ... + CanBac3(3 + CanBac2(2))) có n – 1 dấu căn
+     */
+    private static float exercise37(int number) {
+        do {
+            if (number < 2) {
+                System.out.println("Please re-enter n");
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+            }
+        } while (number < 2);
+        float sum = 0, i = 2;
+        while (i <= number) {
+            sum = (float) pow(i + sum, 1.0 / i);
+            i++;
+        }
+        return sum;
+    }
+
+    /**
+     * Bài 38: Tính S(n) = CanBac N + 1(N + CanBac N(N – 1 +...+CanBac3(2 + CanBac2(1)))) có n dấu căn
+     */
+    private static float exercise38(int number) {
+        do {
+            if (number < 2) {
+                System.out.println("Please re-enter n");
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+            }
+        } while (number < 2);
+        float sum = 0, i = 2;
+        while (i <= number) {
+            sum = (float) pow(i + sum, 1.0 / (i + 1));
+            i++;
+        }
+        return sum;
+    }
+
+    /**
+     * Bài 39: Tính S(n) = CanBac N + 1(N! + CanBacN((N – 1)! + ... + CanBac3(2!CanBac2(1!))) có n dấu căn
+     */
+    private static float exercise39(int number) {
+        do {
+            if (number < 1) {
+                System.out.println("Please re-enter n");
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+            }
+        } while (number < 1);
+        float sum = 0, i = 2, j = 1, fac = 1;
+        while (i <= number) {
+            fac *= j;
+            sum = (float) pow(fac + sum, 1.0 / i);
+            i++;
+            j++;
+
+        }
+        return sum;
+    }
+
+    /**
+     * Bài 40: Tính S(n) = CanBac2(x^n + CanBac2(x^n-1 + ... + CanBac2(x^2 + CanBac2(x)))) có n dấu căn
+     */
+    private static float exercise40(int number, int x) {
+        do {
+            if (x < 0) {
+                System.out.println("Please re-enter x");
+                Scanner scanner = new Scanner(System.in);
+                x = scanner.nextInt();
+            }
+        } while (x < 0);
+
+        do {
+            if (number < 1) {
+                System.out.println("Please re-enter n");
+                Scanner scanner01 = new Scanner(System.in);
+                number = scanner01.nextInt();
+            }
+        } while (number < 1);
+        int i = 1;
+        float temp = 1, sum = 0;
+        while (i <= number) {
+            temp *= x;
+            sum = (float) sqrt(temp + sum);
+            i++;
+        }
+        return sum;
+    }
+
+    /**
+     * Bài 41: Tính S(n) = 1 / (1 + 1 / ( 1 + 1 / (.... 1 + 1 / 1 + 1))) có n dấu phân số
+     */
+    private static float exercise41(int number) {
+        float sum = 0;
+        for (int i = 0; i <= number; i++) {
+            sum = (float) (1 + 1.0 / sum);
+        }
+        return sum;
+    }
+
+    /**
+     * Bài 42: Cho n là số nguyên dương. Hãy tìm giá trị nguyên dương k lớn nhất sao cho S(k) &lt; n. Trong đó chuỗi k được định nghĩa như sau: S(k) = 1 + 2 + 3... + k
+     */
+    private static void exercise42(int number) {
+        float sum = 0;
+        int i = 0;
+        do {
+            if (number < 0) {
+                System.out.println("Please re-enter n");
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+            }
+        } while (number < 0);
+        while (sum + i < number) {
+            i++;
+            sum += i;
+        }
+        System.out.println("The max value S(k) = 1 + ... + k < n " + sum);
+    }
+
+    /**
+     * Bài 43: Hãy đếm số lượng chữ số của số nguyên dương n
+     */
+    private static int exercise43(int number) {
+        do {
+            if (number <= 0) {
+                System.out.println("Please re-enter n");
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+            }
+        } while (number <= 0);
+        int temp;
+        int count = 0;
+        temp = number;
+        if (number == 0) {
+            count = 1;
+        }
+        while (temp != 0) {
+
+            count++;
+            temp = temp / 10;
+        }
+        return count;
+    }
 
     public static void main(String... agv) {
 
@@ -583,7 +755,6 @@ public class JavaCoreApplication {
 
         float sumPartTwoNPlusOne = exercise05(number);
         System.out.println("S(" + number + ") " + "= " + sumPartTwoNPlusOne);
-
 
         float sumPartNMultiNPlusOne = exercise06(number);
         System.out.println("S(" + number + ") " + "= " + sumPartNMultiNPlusOne);
@@ -672,6 +843,32 @@ public class JavaCoreApplication {
 
         float sumSqrtOfTheExercise34 = exercise34(number);
         System.out.println("S(" + number + ") = " + sumSqrtOfTheExercise34);
+
+        float sumSqrtOfTheExercise35 = exercise35(number);
+        System.out.println("S(" + number + ") = " + sumSqrtOfTheExercise35);
+
+        float sumFactorial = exercise36(number);
+        System.out.println("S(" + number + ") = " + sumFactorial);
+
+        float sumExercise37 = exercise37(number);
+        System.out.println("S(" + number + ") = " + sumExercise37);
+
+        float sumExercise38 = exercise38(number);
+        System.out.println("S(" + number + ") = " + sumExercise38);
+
+        float sumExercise39 = exercise39(number);
+        System.out.println("S(" + number + ") = " + sumExercise39);
+
+        float sumExercise40 = exercise40(number, x);
+        System.out.println("S(" + number + ") = " + sumExercise40);
+
+        float sumExercise41 = exercise41(number);
+        System.out.println("S(" + number + ") = " + sumExercise41);
+
+        exercise42(number);
+
+        float countOfDivisors = exercise43(number);
+        System.out.println("Numerical digit " + number + ": " + countOfDivisors);
     }
 
 }
