@@ -20,7 +20,7 @@ public class JavaCoreApplication {
     private static int exercise02(int number) {
         int sum = 0;
         for (int i = 0; i <= number; i++) {
-            int pw = (int) Math.pow(i, 2);
+            int pw = (int) pow(i, 2);
             sum += pw;
         }
         return sum;
