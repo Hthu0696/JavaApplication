@@ -513,7 +513,7 @@ public class JavaCoreApplication {
                 number = scanner.nextInt();
             }
         } while (number < 1);
-        sum = (float) Math.sqrt(2);
+        sum = (float) sqrt(2);
         int i = 2;
         while (i <= number) {
             sum = (float) Math.sqrt(2 + sum);
