@@ -230,7 +230,7 @@ public class JavaCoreApplication {
     private static float exercise19(int x, int number) {
         int sum = 1, i = 1, temp = 1, m = 1;
         while (i <= number) {
-            temp *= (int) Math.pow(x, ((2 * i) + 1));
+            temp *= (int) pow(x, ((2 * i) + 1));
             m *= (2 * i) + 1;
             sum += temp / m;
             i++;
