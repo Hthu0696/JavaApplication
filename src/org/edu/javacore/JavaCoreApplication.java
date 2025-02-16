@@ -216,7 +216,7 @@ public class JavaCoreApplication {
     private static float exercise18(int x, int number) {
         int sum = 1, i = 1, temp = 1, m = 1;
         while (i <= number) {
-            temp *= (int) Math.pow(x, (2 * i));
+            temp *= (int) pow(x, (2 * i));
             m *= 2 * i;
             sum += temp / m;
             i++;
