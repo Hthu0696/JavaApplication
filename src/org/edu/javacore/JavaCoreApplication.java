@@ -216,7 +216,7 @@ public class JavaCoreApplication {
      * Bài 18: Tính S(n) = 1 + x^2/2! + x^4/4! + … + x^2n/(2n)!
      */
     private static float exercise18(int x, int number) {
-        int sum = 1, i = 1, m = 1, n = 1;
+        int sum = 1, i = 1, m, n = 1;
         int temp = 1;
         while (i <= number) {
             temp *= (int) pow(x, (2 * i));
@@ -726,8 +726,8 @@ public class JavaCoreApplication {
      * Bài 44: Hãy tính tổng các chữ số của số nguyên dương n
      */
     private static int exercise44(int number) {
-        int sum = 0, temp = 0;
-        for (; number != 0; ) {
+        int sum = 0, temp;
+        while (number != 0) {
             temp = number % 10;
             sum += temp;
             number /= 10;
@@ -739,8 +739,8 @@ public class JavaCoreApplication {
      * Bài 45: Hãy tính tích các chữ số của số nguyên dương n
      */
     private static int exercise45(int number) {
-        int multi = 1, temp = 1;
-        for (; number != 0; ) {
+        int multi = 1, temp;
+        while (number != 0) {
             temp = number % 10;
             multi *= temp;
             number /= 10;
@@ -863,9 +863,6 @@ public class JavaCoreApplication {
             }
         } while (number < 0);
         int temp, max = 0;
-        if (number == 0) {
-            max = 0;
-        }
         while (number > 0) {
             temp = number % 10;
             number /= 10;
