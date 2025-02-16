@@ -216,11 +216,15 @@ public class JavaCoreApplication {
      * Bài 18: Tính S(n) = 1 + x^2/2! + x^4/4! + … + x^2n/(2n)!
      */
     private static float exercise18(int x, int number) {
-        int sum = 1, i = 1, temp = 1, m = 1;
+        int sum = 1, i = 1, m = 1, n = 1;
+        int temp = 1;
         while (i <= number) {
             temp *= (int) pow(x, (2 * i));
-            m *= 2 * i;
-            sum += temp / m;
+            m = 2 * i;
+            n = n * factorial(m);
+            if (n != 0) {
+                sum = (sum + temp) / n;
+            }
             i++;
         }
         return sum;
@@ -713,9 +717,383 @@ public class JavaCoreApplication {
         while (temp != 0) {
 
             count++;
-            temp = temp / 10;
+            temp /= 10;
         }
         return count;
+    }
+
+    /**
+     * Bài 44: Hãy tính tổng các chữ số của số nguyên dương n
+     */
+    private static int exercise44(int number) {
+        int sum = 0, temp = 0;
+        for (; number != 0; ) {
+            temp = number % 10;
+            sum += temp;
+            number /= 10;
+        }
+        return sum;
+    }
+
+    /**
+     * Bài 45: Hãy tính tích các chữ số của số nguyên dương n
+     */
+    private static int exercise45(int number) {
+        int multi = 1, temp = 1;
+        for (; number != 0; ) {
+            temp = number % 10;
+            multi *= temp;
+            number /= 10;
+        }
+        return multi;
+    }
+
+    /**
+     * Bài 46: Hãy đếm số lượng chữ số lẻ của số nguyên dương n
+     */
+
+    private static int exercise46(int number) {
+        do {
+            if (number <= 0) {
+                System.out.println("Please re-enter n");
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+            }
+        } while (number <= 0);
+        int count = 0;
+        while (number != 0) {
+            int temp = number % 10;
+            if (temp % 2 == 1) {
+                count++;
+            }
+            number /= 10;
+        }
+        return count;
+    }
+
+    /**
+     * Bài 47: Hãy tính tổng các chữ số chẵn của số nguyên dương n
+     */
+    private static int exercise47(int number) {
+        do {
+            if (number <= 0) {
+                System.out.println("Please re-enter n");
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+            }
+        } while (number <= 0);
+        int sum = 0;
+        while (number != 0) {
+            int temp = number % 10;
+            if (temp % 2 == 0) {
+                sum += temp;
+            }
+            number /= 10;
+        }
+        return sum;
+    }
+
+    /**
+     * Bài 48: Hãy tính tích các chữ số lẻ của số nguyên dương n
+     */
+    private static int exercise48(int number) {
+        do {
+            if (number <= 0) {
+                System.out.println("Please re-enter n");
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+            }
+        } while (number <= 0);
+        int multi = 1;
+        while (number != 0) {
+            int temp = number % 10;
+            if (temp % 2 == 1) {
+                multi *= temp;
+            }
+            number /= 10;
+        }
+        return multi;
+    }
+
+    /**
+     * Bài 49: Cho số nguyên dương n. Hãy tìm chữ số đầu tiên của n
+     */
+    private static int exercise49(int number) {
+        do {
+            if (number <= 0) {
+                System.out.println("Please re-enter n");
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+            }
+        } while (number <= 0);
+        int temp = number, max;
+        max = temp % 10;
+        return max;
+    }
+
+    /**
+     * Bài 50: Hãy tìm số đảo ngược của số nguyên dương n
+     */
+    private static int exercise50(int number) {
+        do {
+            if (number <= 0) {
+                System.out.println("Please re-enter n");
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+            }
+        } while (number <= 0);
+        int reverse = 0, temp;
+        while (number > 0) {
+            temp = number % 10;
+            reverse = reverse * 10 + temp;
+            number /= 10;
+        }
+        return reverse;
+    }
+
+    /**
+     * Bài 51: Tìm chữ số lớn nhất của số nguyên dương n
+     */
+    private static int exercise51(int number) {
+        do {
+            if (number < 0) {
+                System.out.println("Please re-enter n");
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+            }
+        } while (number < 0);
+        int temp, max = 0;
+        if (number == 0) {
+            max = 0;
+        }
+        while (number > 0) {
+            temp = number % 10;
+            number /= 10;
+            if (temp > max) {
+                max = temp;
+            }
+        }
+        return max;
+    }
+
+    /**
+     * Bài 52: Tìm chữ số nhỏ nhất của số nguyên dương n
+     */
+    private static int exercise52(int number) {
+        do {
+            if (number < 0) {
+                System.out.println("Please re-enter n");
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+            }
+        } while (number < 0);
+        int temp, min = number;
+        while (number > 0) {
+            temp = number % 10;
+            number /= 10;
+            if (temp < min) {
+                min = temp;
+            }
+        }
+        return min;
+    }
+
+    /**
+     * Bài 53: Hãy đếm số lượng chữ số lớn nhất của số nguyên dương n
+     */
+    private static int exercise53(int number) {
+        do {
+            if (number < 0) {
+                System.out.println("Please re-enter n");
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+            }
+        } while (number < 0);
+        int max = 0;
+        int temp = number, count = 0;
+        while (number != 0) {
+            int sum = number % 10;
+            if (max < sum) {
+                max = sum;
+            }
+            number /= 10;
+        }
+        while (temp != 0) {
+            int tmp = temp % 10;
+            if (tmp == max) {
+                count++;
+            }
+            temp /= 10;
+        }
+        return count;
+    }
+
+    /**
+     * Bài 54: Hãy đếm số lượng chữ số nhỏ nhất của số nguyên dương n
+     */
+    private static int exercise54(int number) {
+        do {
+            if (number < 0) {
+                System.out.println("Please re-enter n");
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+            }
+        } while (number < 0);
+        int min = number;
+        int temp = number, count = 0;
+        while (number != 0) {
+            int sum = number % 10;
+            if (sum < min) {
+                min = sum;
+            }
+            number /= 10;
+        }
+        while (temp != 0) {
+            int tmp = temp % 10;
+            if (tmp == min) {
+                count++;
+            }
+            temp /= 10;
+        }
+        return count;
+    }
+
+    /**
+     * Bài 55: Hãy dếm số lượng chữ số đầu tiên của số nguyên dương n
+     */
+    private static int exercise55(int number) {
+        do {
+            if (number <= 0) {
+                System.out.println("Please re-enter n");
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+            }
+        } while (number <= 0);
+        int temp = number, max, count = 0;
+        max = temp % 10;
+        while (temp != 0) {
+            int tmp = temp % 10;
+            if (tmp == max) {
+                count++;
+            }
+            temp /= 10;
+        }
+        return count;
+    }
+
+    /**
+     * Bài 56: Hãy kiểm tra số nguyên dương n có toàn chữ số lẻ hay không
+     */
+    private static boolean exercise56(int number) {
+        do {
+            if (number < 0) {
+                System.out.println("Please re-enter n");
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+            }
+        } while (number < 0);
+        boolean check = true;
+        while (number != 0) {
+            if ((number % 10) % 2 == 0) {
+                check = false;
+                break;
+            }
+            number /= 10;
+        }
+        return check;
+    }
+
+    /**
+     * Bài 57:Hãy kiểm tra số nguyên dương n có tao2n chữ số chẵn hay không?
+     */
+    private static boolean exercise57(int number) {
+        do {
+            if (number < 0) {
+                System.out.println("Please re-enter n");
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+            }
+        } while (number < 0);
+        boolean check = true;
+        while (number != 0) {
+            if ((number % 10) % 2 == 1) {
+                check = false;
+                break;
+            }
+            number /= 10;
+        }
+        return check;
+    }
+
+    /**
+     * Bài 58:Hãy kiểm tra số nguyên dương n có tao2n chữ số chẵn hay không?
+     */
+    private static boolean exercise58(int number) {
+        do {
+            if (number < 0) {
+                System.out.println("Please re-enter n");
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+            }
+        } while (number < 0);
+        boolean check = true;
+        while (number != 0) {
+            if ((number % 10) % 2 == 1) {
+                check = false;
+                break;
+            }
+            number /= 10;
+        }
+        return check;
+    }
+
+    /**
+     * Bài 59: Hãy kiểm tra s nguyên dương n có đối xứng hay không?
+     */
+    private static boolean exercise59(int number) {
+        int sum = 0, temp, tmp;
+        for (temp = number; number != 0; number = number / 10) {
+            tmp = number % 10;
+            sum = sum * 10 + tmp;
+        }
+        if (temp == sum) {
+            return true;
+        }
+        return false;
+
+    }
+
+    /**
+     * Bài 60: Hãy kiểm tra các chữ số nguyên dương n có tăng tần từ trái sang phải hay không
+     */
+    private static boolean exercise60(int number) {
+        do {
+            if (number < 0) {
+                System.out.println("Please re-enter n");
+                Scanner scanner = new Scanner(System.in);
+                number = scanner.nextInt();
+            }
+        } while (number < 0);
+        boolean isAscending = true;
+        int temp = number;
+
+        int endNumber = temp % 10;
+        temp /= 10;
+        while (temp != 0) {
+            int beforeEndNumber = temp % 10;
+            temp /= 10;
+            if (endNumber < beforeEndNumber) {
+                isAscending = false;
+                break;
+            } else {
+                endNumber = beforeEndNumber;
+            }
+        }
+        if (isAscending) {
+            return true;
+        }
+
+        return false;
     }
 
     public static void main(String... agv) {
@@ -868,7 +1246,58 @@ public class JavaCoreApplication {
         exercise42(number);
 
         float countOfDivisors = exercise43(number);
-        System.out.println("Numerical digit " + number + ": " + countOfDivisors);
+        System.out.println("Count Numerical digit " + number + ": " + countOfDivisors);
+
+        int sumNumericalDigit = exercise44(number);
+        System.out.println("Sum Numerical digit " + number + ": " + sumNumericalDigit);
+
+        int multiNumericalDigit = exercise45(number);
+        System.out.println("Multi Numerical digit " + number + ": " + multiNumericalDigit);
+
+        int countOddNumericalDigit = exercise46(number);
+        System.out.println("Count Odd Numerical Digit " + number + ": " + countOddNumericalDigit);
+
+        int sumParityNumericalDigit = exercise47(number);
+        System.out.println("sum Parity numerical digit " + number + ": " + sumParityNumericalDigit);
+
+        int multiOddNumericalDigit = exercise48(number);
+        System.out.println("Multi Odd Numerical digit " + number + ": " + multiOddNumericalDigit);
+
+        int firstUpNumericalDigit = exercise49(number);
+        System.out.println("first Up Numerical Digit " + number + ": " + firstUpNumericalDigit);
+
+        int reverseNumericalDigit = exercise50(number);
+        System.out.println("first Up Numerical Digit " + number + ": " + reverseNumericalDigit);
+
+        int maximumNumericalDigit = exercise51(number);
+        System.out.println("maximum Numerical Digit " + number + ": " + maximumNumericalDigit);
+
+        int minimumNumericalDigit = exercise52(number);
+        System.out.println("minimum Numerical Digit " + number + ": " + minimumNumericalDigit);
+
+        int countMaximumNumericalDigit = exercise53(number);
+        System.out.println("count Maximum Numerical Digit " + number + ": " + countMaximumNumericalDigit);
+
+        int countMinimumNumericalDigit = exercise54(number);
+        System.out.println("count minimum Numerical Digit " + number + ": " + countMinimumNumericalDigit);
+
+        int countFirstUpNumericalDigit = exercise55(number);
+        System.out.println("count First Up Numerical Digit " + number + ": " + countFirstUpNumericalDigit);
+
+        boolean checkOddNumericalDigit = exercise56(number);
+        System.out.println("The Odd Numerical Digit " + number + ": " + checkOddNumericalDigit);
+
+        boolean checkParityNumericalDigit = exercise57(number);
+        System.out.println("The Parity Numerical Digit " + number + ": " + checkParityNumericalDigit);
+
+        boolean checkParityNumerical = exercise58(number);
+        System.out.println("The Parity Numerical Digit " + number + ": " + checkParityNumerical);
+
+        boolean checkPalindrome = exercise59(number);
+        System.out.println(number + "is a palindrome true or false: " + checkPalindrome);
+
+        boolean checkAscending = exercise60(number);
+        System.out.println(number + " has ascending from left to right (true or false) " + checkAscending);
     }
 
 }
