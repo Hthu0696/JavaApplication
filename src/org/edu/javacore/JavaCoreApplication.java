@@ -114,7 +114,7 @@ public class JavaCoreApplication {
      * Bài 10: Tính T(x, n) = x^n
      */
     private static double exercise10(int x, int number) {
-        return Math.pow(x, number);
+        return pow(x, number);
     }
 
     /**
